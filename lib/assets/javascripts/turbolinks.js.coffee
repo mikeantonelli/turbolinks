@@ -120,7 +120,7 @@ constrainPageCacheTo = (limit) ->
     delete pageCache[key]
 
 changePage = (title, body, csrfToken, runScripts) ->
-  triggerEvent EVENTS.BEFORE_UNLOAD
+  triggerEvent EVENTS.BEFORE_UNLOAD, {title: title, body: body}
   document.title = title
   document.documentElement.replaceChild body, document.body
   CSRFToken.update csrfToken if csrfToken?
